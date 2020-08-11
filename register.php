@@ -6,6 +6,7 @@
     $account = new Account($con);
 
     include("includes/handlers/register-handler.php");
+    include("includes/handlers/login-handler.php");
 
     function getInputValue($name) {
         if (isset($_POST[$name])) {
@@ -24,9 +25,11 @@
 
 <body>
   <div id="inputContainer">
+    <!-- Login form -->
     <form action="register.php" method="POST" id="loginForm">
       <h2>Login to your account</h2>
       <p>
+        <?php echo $account->getError(Constants::$loginFail); ?>
         <label for="loginUsername">Username: </label>
         <input type="text" id="loginUsername" name="loginUsername" placeholder="e.g. rickSanchez" required>
       </p>
