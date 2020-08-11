@@ -20,7 +20,7 @@
             if (empty($this->errorsArray) == true) {
                 // Insert account into db
                 //STOPPED AT 18 3:24
-                return insertUserDetails($un, $fn, $ln, $em, $pw);
+                return $this->insertUserDetails($un, $fn, $ln, $em, $pw);
             } else {
                 return false;
             }
@@ -36,6 +36,11 @@
         private function insertUserDetails($un, $fn, $ln, $em, $pw) {
             $encryptedPw = md5($pw);
             $profilePic = "assets/images/profile-pics/head_emerald.png";
+            $date = date("Y-m-d");
+
+            $result = mysqli_query($this->con, "INSERT INTO users VALUES ('', '$un', '$fn', '$ln','$em', '$encryptedPw', '$date', '$profilePic')");
+
+            return $result;
         }
 
         private function validateUsername($un) {
@@ -44,7 +49,12 @@
                 return;
             }
 
-            //TODO: check if user exists
+            // check if user exists
+            $checkUsernameQuery = mysqli_query($this->con, "SELECT username FROM users WHERE username='$un'");
+            if(mysqli_num_rows($checkUsernameQuery) != 0) {
+                array_push($this->errorsArray, Constants::$usernameTaken);
+                return;
+            }
         }
       
         private function validateFirstName($fn) {
@@ -72,7 +82,12 @@
                 return;
             }
 
-            //TODO: Check that email has not been already used
+            // Check that email has not been already used
+            $checkEmailQuery = mysqli_query($this->con, "SELECT email FROM users WHERE email='$em'");
+            if(mysqli_num_rows($checkEmailQuery) != 0) {
+                array_push($this->errorsArray, Constants::$emailTaken);
+            }
+            return;
         }
       
         private function validatePasswords($pw, $pw2) {
@@ -81,7 +96,7 @@
                 return;
             }
 
-            if (preg_match('/[^A-Za-z0-9]', $pw)) {
+            if (preg_match('/[^A-Za-z0-9]/', $pw)) {
                 array_push($this->errorsArray, Constants::$passwordNotAlphanumeric);
                 return;
             }

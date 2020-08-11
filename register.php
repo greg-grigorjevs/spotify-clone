@@ -39,10 +39,11 @@
     </form>
 
     <!-- Register form -->
-    <form action="register.php" method="POST" id="registerForm">
+    <form action="register.php" autocomplete="off" method="POST" id="registerForm">
       <h2>Create your free account</h2>
       <p>
         <?php echo $account->getError(Constants::$usernameCharacters); ?>
+        <?php echo $account->getError(Constants::$usernameTaken); ?>
         <label for="registerUsername">Username: </label>
         <input type="text" id="registerUsername" name="registerUsername" value="<?php getInputValue("registerUsername") ?>" placeholder="e.g. rickSanchez" required>
       </p>
@@ -59,6 +60,7 @@
       <p>
         <?php echo $account->getError(Constants::$emailsDoNotMatch); ?>
         <?php echo $account->getError(Constants::$emailInvalid); ?>
+        <?php echo $account->getError(Constants::$emailTaken); ?>
         <label for="email">Email: </label>
         <input type="email" id="email" name="email" value="<?php getInputValue('email') ?>" placeholder="e.g. rick@gmail.com" required>
       </p>
@@ -75,7 +77,7 @@
       </p>
       <p>
         <label for="registerPassword2">Confirm Password: </label>
-        <input type="text" id="registerPassword2" name="registerPassword2" required>
+        <input type="password" id="registerPassword2" name="registerPassword2" required>
       </p>
 
       <button type="submit" name="registerButton">Register</button>
