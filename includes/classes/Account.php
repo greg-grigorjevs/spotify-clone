@@ -4,7 +4,7 @@
         private $con;
 
         public function __construct($con) {
-            $this->$con = $con;
+            $this->con = $con;
             $this->errorsArray = array();
         }
 
@@ -34,7 +34,8 @@
         }
 
         private function insertUserDetails($un, $fn, $ln, $em, $pw) {
-
+            $encryptedPw = md5($pw);
+            $profilePic = "assets/images/profile-pics/head_emerald.png";
         }
 
         private function validateUsername($un) {
