@@ -20,7 +20,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="assets/css/register1.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/register.css">
     <title>Welcome to Slotify</title>
 </head>
 
@@ -93,7 +93,7 @@
                         <input type="password" id="registerPassword2" name="registerPassword2" required>
                     </p>
 
-                    <button type="submit" name="registerButton">Register</button>
+                    <button type="submit" name="registerButton">SIGN UP</button>
                 </form>
             </div>
         </div>
