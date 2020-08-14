@@ -20,7 +20,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="assets/css/register.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/register1.css">
     <title>Welcome to Slotify</title>
 </head>
 
