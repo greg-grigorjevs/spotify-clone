@@ -29,6 +29,13 @@
 </head>
 
 <body>
+    
+    <script>
+    	$(document).ready(function() {
+	    $("#loginForm").hide();
+	    $("#registerForm").show();
+	});
+    </script>
     <div id="background">
         <div id="loginContainer">
             <div id="inputContainer">
