@@ -78,6 +78,7 @@ body {
     color: #a0a0a0;
     font-size: 13px;
     margin-top: 15px;
+    display: block;
 }
 
 #inputContainer button {
@@ -135,5 +136,13 @@ body {
 #loginText li {
     font-size: 20px;
     list-style-type: none;
-    padding: 10px;
+    padding: 5px 30px;
+    background: url(../images/icons/checkmark.png) no-repeat;
+    
+}
+
+#inputContainer .errorMessage {
+    color: #07d159;
+    font-size: 18px;
+    display: block;
 }
