@@ -21,6 +21,15 @@ if(isset($_SESSION['userLoggedIn'])) {
     <body>
 
         <div id="nowPlayingBarContainer">
+
+            <div id="nowPlayingBar">
+                <div id="nowPlayingLeft">
+                </div> 
+                <div id="nowPlayingCenter">
+                </div> 
+                <div id="nowPlayingRigth">
+                </div> 
+            </div>
             
         </div>
 
