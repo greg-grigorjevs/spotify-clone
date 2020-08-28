@@ -27,8 +27,20 @@ if(isset($_SESSION['userLoggedIn'])) {
                     <div class="content">
                         <span class="albumLink">
                             <img src="https://i.insider.com/5c59e77ceb3ce80d46564023?width=1100&format=jpeg&auto=webp"
-                            class="albumArtwork">
+                                 class="albumArtwork">
                         </span>
+
+                        <div class="trackInfo">
+
+                            <span class="trackName">
+                                <span>All Star</span>
+                            </span>
+
+                            <span class="artistName">
+                                <span>Smash Mouth</span>
+                            </span>
+
+                        </div>
                     </div>
                 </div> 
                 <div id="nowPlayingCenter">
@@ -58,23 +70,23 @@ if(isset($_SESSION['userLoggedIn'])) {
                                 <img src="assets/images/icons/repeat.png" alt="Repeat">
                             </button>
 
-                            <div class="playbackBar">
-                                <span class="progressTime current">0.00</span>
-
-                                <div class="progressBar">
-                                    <div class="progressBarBg">
-                                        <div class="progress"></div>
-                                    </div>
-                                </div>
-
-                                <span class="progressTime remaining">0.00</span>
-                            </div>
 
 
                         </div>
+                        <div class="playbackBar">
+                            <span class="progressTime current">0.00</span>
+
+                            <div class="progressBar">
+                                <div class="progressBarBg">
+                                    <div class="progress"></div>
+                                </div>
+                            </div>
+
+                            <span class="progressTime remaining">0.00</span>
+                        </div>
                     </div>
                 </div> 
-                <div id="nowPlayingRigth">
+                <div id="nowPlayingRight">
                 </div> 
             </div>
 
