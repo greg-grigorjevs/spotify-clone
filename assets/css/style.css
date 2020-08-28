@@ -151,3 +151,19 @@ html, body {
     min-height: 100%;
     width: 100%;
 }
+
+#navBarContainer {
+    background-color: black;
+    width: 220px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.navBar {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
