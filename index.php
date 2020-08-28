@@ -24,6 +24,12 @@ if(isset($_SESSION['userLoggedIn'])) {
 
             <div id="nowPlayingBar">
                 <div id="nowPlayingLeft">
+                    <div class="content">
+                        <span class="albumLink">
+                            <img src="https://i.insider.com/5c59e77ceb3ce80d46564023?width=1100&format=jpeg&auto=webp"
+                            class="albumArtwork">
+                        </span>
+                    </div>
                 </div> 
                 <div id="nowPlayingCenter">
                     <div class="content playerControls">
