@@ -40,8 +40,8 @@ if(isset($_SESSION['userLoggedIn'])) {
                                 <img src="assets/images/icons/play.png" alt="Play">
                             </button>
 
-                            <button class="controlButton pause" title="Pause button">
-                                <img src="assets/images/icons/pause.png" alt="Pause" style="display: none">
+                            <button class="controlButton pause" title="Pause button" style="display: none">
+                                <img src="assets/images/icons/pause.png" alt="Pause" >
                             </button>
 
                             <button class="controlButton next" title="Next button">
@@ -52,13 +52,20 @@ if(isset($_SESSION['userLoggedIn'])) {
                                 <img src="assets/images/icons/repeat.png" alt="Repeat">
                             </button>
 
+                            <div class="playbackBar">
+                                <span class="progressTime current">0.00</span>
+                                <div class="progressBar"></div>
+                                <span class="progressTime remaining">0.00</span>
+                            </div>
+
+
                         </div>
                     </div>
                 </div> 
                 <div id="nowPlayingRigth">
                 </div> 
             </div>
-            
+
         </div>
 
     </body>
