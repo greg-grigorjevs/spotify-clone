@@ -168,6 +168,10 @@ html, body {
     flex-direction: column;
 }
 
+.logo {
+    margin-bottom: 15px;
+}
+
 .logo img {
     width: 32px;
 }
@@ -178,9 +182,21 @@ html, body {
 }
 
 .navItem {
-    padding: 7px;
-    font-size: 16px;
-    font-weight: 700;
+    padding: 10px 0;
     display: block;
     letter-spacing: 1px;
+    display: block;
+    position: relative;
+}
+
+.navItemLink {
+    color: #a0a0a0;
+    text-decoration: none;
+}
+
+.navItemLink .icon {
+    position: absolute;
+    width: 25px;
+    top: 8px;
+    right: 0;
 }
