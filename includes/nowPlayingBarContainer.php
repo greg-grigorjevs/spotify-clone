@@ -13,7 +13,20 @@ $jsonArray = json_encode($resultArray);
 
 <script charset="utf-8">
 
-    console.log(<?php echo $jsonArray; ?>);
+$(document).ready(function() {
+    currentPlaylist = <?php echo $jsonArray; ?>;
+    audioElement = new Audio();
+    setTrack(currentPlaylist[0], currentPlaylist, false);
+})
+
+function setTrack(trackId, newPlaylist, play) {
+    audioElement.setTrack("assets/music/bensound-goinghigher.mp3");
+    
+    if(play) {
+        audioElement.play();
+        
+    }
+}
 
 </script>
 
