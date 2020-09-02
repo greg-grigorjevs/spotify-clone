@@ -79,6 +79,15 @@ function timeFromOffset(mouse, progressBar) {
     audioElement.setTime(seconds);
 }
 
+function prevSong() {
+    if (audioElement.audio.currentTime <= 3 || currentIndex == 0) {
+        audioElement.setTime(0);
+    } else {
+        currentIndex--;
+        setTrack(currentPlaylist[currentIndex], currentPlaylist, true);
+    }
+}
+
 function nextSong() {
     if (repeat) {
         audioElement.setTime(0);
@@ -99,6 +108,46 @@ function setRepeat() {
     repeat = !repeat;
     const imageName = repeat ? "repeat-active.png" : "repeat.png";
     $(".controlButton.repeat img").attr("src", "assets/images/icons/" + imageName);
+}
+
+function setMute() {
+    audioElement.audio.muted = !audioElement.audio.muted;
+    const imageName = audioElement.audio.muted ? "volume-mute.png" : "volume.png";
+    $(".controlButton.volume img").attr("src", "assets/images/icons/" + imageName);
+}
+
+function setShuffle() {
+    shuffle = !shuffle;
+    const imageName = shuffle ? "shuffle-active.png" : "shuffle.png";
+    $(".controlButton.shuffle img").attr("src", "assets/images/icons/" + imageName);
+
+    if (shuffle) {
+        //randomize the playlist
+        console.log(currentPlaylist)
+        console.log(shufflePlaylist(currentPlaylist))
+    } else {
+        //go back to regular playlist
+    }
+}
+
+function shufflePlaylist(playlist) {
+    var shuffledArr = playlist;
+    var currentIndex = shuffledArr.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = shuffledArr[currentIndex];
+    shuffledArr[currentIndex] = shuffledArr[randomIndex];
+    shuffledArr[randomIndex] = temporaryValue;
+    }
+
+    return shuffledArr;
 }
 
 function setTrack(trackId, newPlaylist, play) {
@@ -170,11 +219,11 @@ function pauseSong() {
         <div id="nowPlayingCenter">
             <div class="content playerControls">
                 <div class="buttons">
-                    <button class="controlButton shuffle" title="Shuffle button">
+                    <button class="controlButton shuffle" title="Shuffle button" onclick="setShuffle()">
                         <img src="assets/images/icons/shuffle.png" alt="Shuffle">
                     </button>
 
-                    <button class="controlButton previous" title="Previous button">
+                    <button class="controlButton previous" title="Previous button" onclick="prevSong()">
                         <img src="assets/images/icons/previous.png" alt="Previous">
                     </button>
 
@@ -212,7 +261,7 @@ function pauseSong() {
         </div> 
         <div id="nowPlayingRight">
             <div class="volumeBar">
-                <button class="controlButton volume">
+                <button class="controlButton volume" onclick="setMute()">
                     <img src="assets/images/icons/volume.png" alt="Volume">
                 </button>
 
