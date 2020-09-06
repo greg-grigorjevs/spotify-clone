@@ -1,5 +1,6 @@
 var currentPlaylist = new Array();
 var shuffledPlaylist = new Array();
+var tempPlaylist = new Array();
 var audioElement;
 var mousedown = false;
 // index of the currently playing song

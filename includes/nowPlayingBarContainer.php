@@ -14,10 +14,10 @@ $jsonArray = json_encode($resultArray);
 <script charset="utf-8">
 
 $(document).ready(function() {
-    currentPlaylist = <?php echo $jsonArray; ?>;
+    var newPlaylist = <?php echo $jsonArray; ?>;
     //create our audio object
     audioElement = new Audio();
-    setTrack(currentPlaylist[0], currentPlaylist, false);
+    setTrack(newPlaylist[0], newPlaylist, false);
     updateVolumeProgressBar(audioElement.audio);
 
     $("#nowPlayingBarContainer").on("mousedown mousemove touchstart touchmove", e => {
@@ -100,7 +100,7 @@ function nextSong() {
         currentIndex++;
     }
 
-    const trackToPlay = currentPlaylist[currentIndex];
+    const trackToPlay = shuffle ? shuffledPlaylist[currentIndex] : currentPlaylist[currentIndex];
     setTrack(trackToPlay, currentPlaylist, true);
 }
 
@@ -123,15 +123,16 @@ function setShuffle() {
 
     if (shuffle) {
         //randomize the playlist
-        console.log(currentPlaylist)
-        console.log(shufflePlaylist(currentPlaylist))
+        //shuffledPlaylist = shufflePlaylist(currentPlaylist);
+        currentIndex = shuffledPlaylist.indexOf(audioElement.currentlyPlaying.id);
     } else {
         //go back to regular playlist
+        currentIndex = currentPlaylist.indexOf(audioElement.currentlyPlaying.id);
     }
 }
 
 function shufflePlaylist(playlist) {
-    var shuffledArr = playlist;
+    var shuffledArr = playlist.slice();
     var currentIndex = shuffledArr.length, temporaryValue, randomIndex;
 
     // While there remain elements to shuffle...
@@ -151,10 +152,22 @@ function shufflePlaylist(playlist) {
 }
 
 function setTrack(trackId, newPlaylist, play) {
+    if (newPlaylist != currentPlaylist) {
+        currentPlaylist = newPlaylist;
+        shuffledPlaylist = shufflePlaylist(currentPlaylist);
+    }
+
+    if (shuffle) {
+        currentIndex = shuffledPlaylist.indexOf(trackId);
+
+    } else {
+        currentIndex = currentPlaylist.indexOf(trackId);
+
+    }
+    
     $.post("includes/handlers/ajax/getSongJson.php", {songId: trackId}, function(data) {
         const track = JSON.parse(data);
         $(".trackName span").text(track.title);
-        currentIndex = currentPlaylist.indexOf(trackId);
 
         // get Artist name
         $.post("includes/handlers/ajax/getSongArtist.php", {artistId: track.artist}, function(data) {
