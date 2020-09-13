@@ -7,6 +7,18 @@ var mousedown = false;
 let currentIndex = 0;
 let repeat = false;
 let shuffle = false;
+var userLoggedIn;
+
+const openPage = (url) => {
+    if (url.indexOf("?") == -1) {
+        url = url + "?";
+    }
+
+    const encodedUrl = encodeURI(url + "&userLoggedIn=" + userLoggedIn);
+    $("#mainContent").load(encodedUrl);
+    $("body").scrollTop(0);
+    history.pushState(null, null, url);
+}
 
 const formatTime = (duration) => {
     const time = Math.round(duration);

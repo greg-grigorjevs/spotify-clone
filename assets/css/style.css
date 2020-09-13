@@ -155,7 +155,7 @@ body {
 }
 
 #topContainer {
-    min-height: 100%;
+    /*min-height: 100%;*/
     width: 100%;
 }
 
@@ -363,4 +363,36 @@ body {
 .tracklistRow .trackInfo .trackName {
     color: white;
     margin-bottom: 7px;
+}
+
+.artistInfo {
+    text-align: center;
+}
+
+.button {
+    color: white;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 500px;
+    letter-spacing: 2px;
+    border: 2px solid white;
+    padding: 15px;
+    min-width: 130px;
+    background-color: transparent;
+    font-weight: 500;
+}
+
+.button.green {
+    background-color: #2ebd59;
+    border-color: #2ebd59;
+}
+
+.borderBottom {
+    border-bottom: 1px solid #939393;
+    margin-bottom: 20px;
+}
+
+.tracklistContainer h2,
+.gridViewContainer h2 {
+   text-align: center;
 }
